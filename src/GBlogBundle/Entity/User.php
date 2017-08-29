@@ -4,7 +4,7 @@ namespace GBlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-# use Doctrine\Common\Collections\ArrayCollection as ArrayCollection;
+use Doctrine\Common\Collections\ArrayCollection as ArrayCollection;
 
 /**
  * User
@@ -58,10 +58,27 @@ class User implements UserInterface
      */
     private $active;
 
+    /**
+    * @var ArrayCollection
+    *
+    * @ORM\OneToMany(targetEntity="Post", mappedBy="user")
+    */
+    private $posts;
+
+
+    /**
+    * @var ArrayCollection
+    *
+    * @ORM\OneToMany(targetEntity="Category", mappedBy="addedBy")
+    */
+    private $addedCategories;
+
 
     public function __construct()
     {
         $this->isActive = true;
+        $this->posts = new ArrayCollection();
+        $this->addedCategories = new ArrayCollection();
     }
 
     public function getSalt()
@@ -208,6 +225,38 @@ class User implements UserInterface
     public function getActive()
     {
         return $this->active;
+    }
+
+    /**
+    * get Posts
+    *
+    * @return ArrayCollection
+    */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
+
+    /**
+    * set posts
+    *
+    * @return User
+    */
+    public function setPosts( $posts )
+    {
+        $this->posts = $posts;
+        return $this;
+    }
+
+
+    public function getCategories()
+    {
+        return $this->categories();
+    }
+
+    public function setCategories( $categories )
+    {
+        $this->categories = $categories;
     }
 
     public function __toString()

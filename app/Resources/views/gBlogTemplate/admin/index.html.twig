@@ -1,11 +1,16 @@
 {% extends '@gBlogTemplate/admin/page.html.twig' %}
 
+{% block headerContent %}
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Benvenuto, {{app.user.username}}</h1>
+    </div>
+</div>
+{% endblock %}
+
+
 {% block mainContent %}
 
 
-Pagina di amministrazione del blog
-<br>
-<a href="{{path('homepage')}}">Torna alla home</a>
-<br>
-<a href="{{path('logout')}}">Fai logout</a>
+
 {% endblock %}

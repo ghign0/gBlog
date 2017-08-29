@@ -10,14 +10,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * User controller.
  *
- * @Route("user")
+ * @Route("users")
  */
 class UserController extends Controller
 {
     /**
      * Lists all user entities.
      *
-     * @Route("/", name="user_index")
+     * @Route("/", name="users_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -26,7 +26,7 @@ class UserController extends Controller
 
         $users = $em->getRepository('GBlogBundle:User')->findAll();
 
-        return $this->render('user/index.html.twig', array(
+        return $this->render('@gBlogTemplate/admin/user/index.html.twig', array(
             'users' => $users,
         ));
     }
@@ -51,7 +51,7 @@ class UserController extends Controller
             return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
 
-        return $this->render('user/new.html.twig', array(
+        return $this->render('@gBlogTemplate/admin/user/new.html.twig', array(
             'user' => $user,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class UserController extends Controller
     {
         $deleteForm = $this->createDeleteForm($user);
 
-        return $this->render('user/show.html.twig', array(
+        return $this->render('@gBlogTemplate/admin/user/show.html.twig', array(
             'user' => $user,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class UserController extends Controller
             return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
         }
 
-        return $this->render('user/edit.html.twig', array(
+        return $this->render('@gBlogTemplate/admin/user/edit.html.twig', array(
             'user' => $user,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
