@@ -2,3 +2,6 @@ g_blog:
     resource: "@GBlogBundle/Controller/"
     type:     annotation
     prefix:   /
+
+logout :
+    path : /admin/logout

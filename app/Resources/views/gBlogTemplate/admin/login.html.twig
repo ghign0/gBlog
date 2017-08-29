@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>GBlog - Login page</title>
+
+        <link rel="stylesheet" href="{{ asset('dist/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/dist/css/AdminLTE.min.css')}}" >
+        <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/dist/css/skins/_all-skins.min.css')}}" >
+        <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/dist/css/skins/skin-blue.min.css')}}" >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    </head>
+    <body class="login-page">
+        <div class="login-box">
+            <div class="login-logo">
+
+            </div>
+            <div class="login-box-body">
+                <p>please log to enter the admin panel</p>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <form action="{{ path('login') }}" method="post">
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <input class="form-control input-lg" type="text" id="username" name="_username" value="{{ last_username }}" placeholder="username">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                        <input class="form-control input-lg" type="password" id="password" name="_password" placeholder="password" >
+                    </div>
+
+                    <br>
+                    {#
+                        If you want to control the URL the user
+                        is redirected to on success (more details below)
+                        <input type="hidden" name="_target_path" value="/account" />
+                    #}
+
+                    <button type="submit" class="btn btn-success">login</button>
+                </form>
+                <p>
+                    <a href="{{path('homepage')}}">Torna alla home</a>
+                </p>
+            </div>
+        </div>
+        </div>
+        <script type="text/javascript" src="{{ asset('dist/js/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendor/almasaeed2010/adminlte/dist/js/app.min.js') }}"></script>
+    </body>
+
+</html>
