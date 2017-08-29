@@ -1,3 +1,4 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+g_blog:
+    resource: "@GBlogBundle/Controller/"
+    type:     annotation
+    prefix:   /
