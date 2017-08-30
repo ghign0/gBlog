@@ -44,6 +44,15 @@
 
             {% endblock %}
         {% endembed %}
+
+        {% embed '@gBlogTemplate/admin/snippets/info.html.twig' %}
+            {% block infoHeader %}
+                <i class="fa fa-tag margin-r-5">Tags disponibili</i>
+            {% endblock %}
+            {% block infoContent %}
+
+            {% endblock %}
+        {% endembed %}
     </div>
 </div>
 {% endblock %}
