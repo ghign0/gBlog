@@ -1,0 +1,52 @@
+{% extends '@gBlogTemplate/admin/page.html.twig' %}
+
+{% block headerContent %}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="small-box bg-green">
+            <div class="inner">
+                CATEGORIE
+            </div>
+
+        </div>
+    </div>
+</div>
+<ol class="breadcrumb" style="margin-right:15px">
+    <li> <a href="{{ path('categories_index') }}"><i class="fa fa-archive"></i> Categorie</a> </li>
+    <li class="active">nuova</li>
+</ol>
+{% endblock %}
+
+{% block mainContent %}
+<div class="row">
+    <div class="col-xs-9">
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <a href="{{ path('categories_index') }}" class="btn btn-danger"><i class="fa fa-arrow-left"></i>Vedi tutte</a>
+            </div>
+            <div class="box-body">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" value="Aggiungi" class="btn btn-success" />
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="col-xs-3">
+        {% embed '@gBlogTemplate/admin/snippets/info.html.twig' %}
+            {% block infoHeader %}
+                <i class="fa fa-database margin-r-5">Lista categorie</i>
+            {% endblock %}
+            {% block infoContent %}
+                {% for cat in categories %}
+                    <p><strong> <a href="{{ path('category_show', {'id': cat.id}) }}"><i class="fa fa-archive margin-r-5"></i></a>{{cat.name}}</strong></p>
+                {% endfor %}
+            {% endblock %}
+        {% endembed %}
+    </div>
+</div>
+{% endblock %}
