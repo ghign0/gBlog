@@ -17,7 +17,7 @@ class PostController extends Controller
     /**
      * Lists all post entities.
      *
-     * @Route("/", name="post_index")
+     * @Route("/", name="posts_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -26,7 +26,7 @@ class PostController extends Controller
 
         $posts = $em->getRepository('GBlogBundle:Post')->findAll();
 
-        return $this->render('post/index.html.twig', array(
+        return $this->render('@gBlogTemplate/admin/post/index.html.twig', array(
             'posts' => $posts,
         ));
     }
@@ -43,6 +43,7 @@ class PostController extends Controller
         $form = $this->createForm('GBlogBundle\Form\PostType', $post);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
@@ -51,8 +52,9 @@ class PostController extends Controller
             return $this->redirectToRoute('post_show', array('id' => $post->getId()));
         }
 
-        return $this->render('post/new.html.twig', array(
+        return $this->render('@gBlogTemplate/admin/post/new.html.twig', array(
             'post' => $post,
+
             'form' => $form->createView(),
         ));
     }

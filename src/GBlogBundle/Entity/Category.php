@@ -233,8 +233,9 @@ class Category
         return $this;
     }
 
+
     public function __toString()
     {
-        return sprintf('%s', $this->getUsername() );
+        return sprintf('%s', $this->getName() );
     }
 }

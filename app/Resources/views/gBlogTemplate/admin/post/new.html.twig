@@ -1,16 +1,49 @@
-{% extends 'base.html.twig' %}
+{% extends '@gBlogTemplate/admin/page.html.twig' %}
 
-{% block body %}
-    <h1>Post creation</h1>
+{% block headerContent %}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="small-box bg-green">
+            <div class="inner">
+                POST
+            </div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+<ol class="breadcrumb" style="margin-right:15px">
+    <li class="active"> <a href="{{path('posts_index')}}"> <i class="fa fa-file-text margin-r-5"></i>Post</a></li>
+    <li class="active">nuovo</li>
+</ol>
+{% endblock %}
 
-    <ul>
-        <li>
-            <a href="{{ path('post_index') }}">Back to the list</a>
-        </li>
-    </ul>
+
+{% block mainContent %}
+<div class="row">
+    <div class="col-xs-9">
+        <div class="box box-warning">
+            <div class="box-header">
+                <a href="{{ path('posts_index') }}">Back to the list</a>
+            </div>
+            <div class="box-body">
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <input type="submit" value="Create" />
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-xs-3">
+        {% embed '@gBlogTemplate/admin/snippets/info.html.twig' %}
+            {% block infoHeader %}
+                <i class="fa fa-database margin-r-5">Lista categorie</i>
+            {% endblock %}
+            {% block infoContent %}
+
+            {% endblock %}
+        {% endembed %}
+    </div>
+</div>
 {% endblock %}

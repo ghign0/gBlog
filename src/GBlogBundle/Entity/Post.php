@@ -269,4 +269,9 @@ class Post
         $this->category = $category;
         return $this;
     }
+
+    public function getTags()
+    {
+        return $this->tags;
+    }
 }

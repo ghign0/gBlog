@@ -107,4 +107,10 @@ class Tag
     {
         return $this->note;
     }
+
+
+    public function getPosts()
+    {
+        return $this->posts;
+    }
 }

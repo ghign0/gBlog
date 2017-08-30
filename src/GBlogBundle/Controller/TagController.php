@@ -17,7 +17,7 @@ class TagController extends Controller
     /**
      * Lists all tag entities.
      *
-     * @Route("/", name="tag_index")
+     * @Route("/", name="tags_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -26,7 +26,7 @@ class TagController extends Controller
 
         $tags = $em->getRepository('GBlogBundle:Tag')->findAll();
 
-        return $this->render('tag/index.html.twig', array(
+        return $this->render('@gBlogTemplate/admin/tag/index.html.twig', array(
             'tags' => $tags,
         ));
     }
@@ -51,7 +51,7 @@ class TagController extends Controller
             return $this->redirectToRoute('tag_show', array('id' => $tag->getId()));
         }
 
-        return $this->render('tag/new.html.twig', array(
+        return $this->render('@gBlogTemplate/admin/tag/new.html.twig', array(
             'tag' => $tag,
             'form' => $form->createView(),
         ));
