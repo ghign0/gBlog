@@ -40,6 +40,15 @@ twig:
     strict_variables: '%kernel.debug%'
     paths:
       '%kernel.project_dir%/app/Resources/views/gBlogTemplate' : gBlogTemplate
+    globals:
+        icons:
+            home: 'home'
+            post: 'file-text'
+            tag: 'tag'
+            category: 'archive'
+            media: 'film'
+            parameters: 'cog'
+            users: 'users'
 
 # Doctrine Configuration
 doctrine:
