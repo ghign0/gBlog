@@ -26,7 +26,7 @@ class MediaController extends Controller
 
         $media = $em->getRepository('GBlogBundle:Media')->findAll();
 
-        return $this->render('media/index.html.twig', array(
+        return $this->render('@gBlogTemplate/admin/media/index.html.twig', array(
             'media' => $media,
         ));
     }
@@ -39,11 +39,17 @@ class MediaController extends Controller
      */
     public function newAction(Request $request)
     {
-        $medium = new Medium();
+        $medium = new Media();
         $form = $this->createForm('GBlogBundle\Form\MediaType', $medium);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+
+            $file = $form['file']->getData();
+            $file->move($this->getParameter('media_dir'), $medium->getNome());
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($medium);
             $em->flush();
@@ -51,7 +57,7 @@ class MediaController extends Controller
             return $this->redirectToRoute('media_show', array('id' => $medium->getId()));
         }
 
-        return $this->render('media/new.html.twig', array(
+        return $this->render('@gBlogTemplate/admin/media/new.html.twig', array(
             'medium' => $medium,
             'form' => $form->createView(),
         ));
@@ -67,7 +73,7 @@ class MediaController extends Controller
     {
         $deleteForm = $this->createDeleteForm($medium);
 
-        return $this->render('media/show.html.twig', array(
+        return $this->render('@gBlogTemplate/admin/media/show.html.twig', array(
             'medium' => $medium,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +97,7 @@ class MediaController extends Controller
             return $this->redirectToRoute('media_edit', array('id' => $medium->getId()));
         }
 
-        return $this->render('media/edit.html.twig', array(
+        return $this->render('@gBlogTemplate/admin/media/edit.html.twig', array(
             'medium' => $medium,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

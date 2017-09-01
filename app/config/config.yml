@@ -8,6 +8,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    media_dir: '%kernel.project_dir%/web/media/'
 
 framework:
     #esi: ~
@@ -47,8 +48,8 @@ twig:
             tag: 'tag'
             category: 'archive'
             media: 'film'
-            parameters: 'cog'
-            users: 'users'
+            parameter: 'cog'
+            user: 'users'
 
 # Doctrine Configuration
 doctrine:

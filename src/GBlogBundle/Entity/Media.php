@@ -58,6 +58,15 @@ class Media
 
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="file", type="string", length=255)
+     */
+    private $file;
+
+
+
+    /**
      * Get id
      *
      * @return int
@@ -186,5 +195,17 @@ class Media
     {
         return $this->path;
     }
-}
 
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function setFile( $file )
+    {
+        $this->file=$file;
+        return $this;
+    }
+
+
+}

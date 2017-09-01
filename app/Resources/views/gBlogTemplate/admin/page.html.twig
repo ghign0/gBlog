@@ -54,15 +54,16 @@
 
                     <!--menu principale-->
                     <ul class="sidebar-menu" >
-                        <li><a href="{{ path('admin_index') }}"><i class="fa fa-{{icons.home}} margin-r-5"></i>Home</a></li>
-                        <li><a href="{{ path('posts_index') }}"><i class="fa fa-{{icons.post}} margin-r-5"></i>Post</a></li>
+                        <li><a href="{{ path('admin_index') }}"><i class="fa fa-{{icons.home}} margin-r-5"></i><span>Home</span></a></li>
+                        <li><a href="{{ path('posts_index') }}"><i class="fa fa-{{icons.post}} margin-r-5"></i><span>Post</span></a></li>
                         {% if is_granted('ROLE_SUPER_ADMIN') %}
-                        <li><a href="{{ path('users_index') }}"><i class="fa fa-{{icons.users}} margin-r-5"></i>Utenti</a></li>
-                        <li><a href="{{ path('categories_index') }}"><i class="fa fa-{{icons.category}} margin-r-5"></i>Categorie</a></li>
-                        <li><a href="#"><i class="fa fa-{{icons.parameters}} margin-r-5"></i>Settings</a></li>
+                        <li><a href="{{ path('users_index') }}"><i class="fa fa-{{icons.user}} margin-r-5"></i><span>Utenti</span></a></li>
+                        <li><a href="{{ path('categories_index') }}"><i class="fa fa-{{icons.category}} margin-r-5"></i><span>Categorie</span></a></li>
+                        <li><a href="#"><i class="fa fa-{{icons.parameter}} margin-r-5"></i><span>Settings</span></a></li>
                         {% endif %}
-                        <li><a href="{{ path('tags_index') }}"><i class="fa fa-{{icons.tag}} margin-r-5"></i>Tags</a></li>
-                        <li><a href="{{ path('logout') }}"><i class="fa fa-sign-out r-margin-5"></i>logout</a></li>
+                        <li><a href="{{ path('tags_index') }}"><i class="fa fa-{{icons.tag}} margin-r-5"></i><span>Tags</span></a></li>
+                        <li><a href="{{ path('media_index') }}"><i class="fa fa-{{icons.media}} margin-r-5"></i><span>Media</span></a></li>
+                        <li><a href="{{ path('logout') }}"><i class="fa fa-sign-out r-margin-5"></i><span>logout</span></a></li>
                     </ul>
               </section>
 
