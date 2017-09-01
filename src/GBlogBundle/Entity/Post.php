@@ -53,7 +53,7 @@ class Post
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="publishDate", type="date")
+     * @ORM\Column(name="publishDate", type="date" ,nullable=true)
      */
     private $publishDate;
 
@@ -264,7 +264,7 @@ class Post
         return $this->category;
     }
 
-    public function stCategory( $category )
+    public function setCategory( $category )
     {
         $this->category = $category;
         return $this;

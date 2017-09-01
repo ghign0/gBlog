@@ -16,26 +16,40 @@ class PostType extends AbstractType
     {
         $builder
         ->add('title', null, [
+            'label' => 'Titolo',
             'attr' => [
                 'placeholder' => 'inserisci il titolo del post'
             ]
         ])
         ->add('slug', null, [
+            'label' => 'Slug',
             'attr' => [
                 'placeholder' => 'inserisci lo slug per URL'
             ]
         ])
-        ->add('category')
-        ->add('creationDate')
+        ->add('category', null , [
+            'label' => 'Categoria',
+        ])
+        ->add('creationDate' ,null , [
+            'label' => 'Creato il',
+            'widget' => 'single_text',
+        ])
         ->add('status', ChoiceType::class, [
             'choices' => [
                 'bozza' => 0,
                 'pubblicato' => 1
             ]
         ])
-        ->add('publishDate')
-        ->add('content')
-        ->add('user')
+        ->add('publishDate', null, [
+            'label' => 'Pubblicato il',
+            'widget' => 'single_text'
+        ])
+        ->add('content',null, [
+            'label'  => 'Testo'
+        ])
+        ->add('user', null, [
+            'label' => 'Scritto da'
+        ])
         ->add('tags');
     }
 

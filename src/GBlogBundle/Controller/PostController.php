@@ -49,12 +49,11 @@ class PostController extends Controller
             $em->persist($post);
             $em->flush();
 
-            return $this->redirectToRoute('post_show', array('id' => $post->getId()));
+            return $this->redirectToRoute('posts_index');
         }
 
         return $this->render('@gBlogTemplate/admin/post/new.html.twig', array(
             'post' => $post,
-
             'form' => $form->createView(),
         ));
     }
@@ -69,7 +68,7 @@ class PostController extends Controller
     {
         $deleteForm = $this->createDeleteForm($post);
 
-        return $this->render('post/show.html.twig', array(
+        return $this->render('@gBlogTemplate/admin/post/show.html.twig', array(
             'post' => $post,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -90,10 +89,10 @@ class PostController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('post_edit', array('id' => $post->getId()));
+            return $this->redirectToRoute('posts_index');
         }
 
-        return $this->render('post/edit.html.twig', array(
+        return $this->render('@gBlogTemplate/admin/post/edit.html.twig', array(
             'post' => $post,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

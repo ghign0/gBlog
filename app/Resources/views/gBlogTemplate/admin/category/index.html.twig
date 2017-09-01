@@ -5,53 +5,51 @@
 {% block mainContent %}
 <div class="row">
     <div class="col-xs-9">
-        <div class="box box-primary">
-            <div class="box-header">
-                <a href="{{ path('category_new') }}" class="btn btn-success"><i class="fa fa-plus margin-r-5"></i>Aggiungi Categoria</a>
-            </div>
-            <div class="box-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Creationdate</th>
-                            <th>Active</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for category in categories %}
-                        <tr>
-                            <td>
-                                {% if category.icon is not null %}
-                                    <i class="fa fa-{{category.icon}}"></i>
-                                {% else %}
-                                    <i class="fa fa-archive "></i>
-                                {% endif %}
-                            </td>
-                            <td><a href="{{ path('category_show', { 'id': category.id }) }}">{{ category.name }}</a></td>
-                            <td>{{ category.description }}</td>
-                            <td>{% if category.creationDate %}{{ category.creationDate|date('d-m-Y') }}{% endif %}</td>
-                            <td>{% if category.active %}Yes{% else %}No{% endif %}</td>
-                            <td>
-                                <ul>
-                                    <li>
-                                        <a href="{{ path('category_show', { 'id': category.id }) }}">show</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('category_edit', { 'id': category.id }) }}">edit</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+        {% embed '@gBlogTemplate/admin/snippets/box-default.html.twig' %}
+            {% block boxHeader %}<a href="{{ path('category_new') }}" class="btn btn-lg btn-success"><i class="fa fa-plus margin-r-5"></i>Aggiungi Categoria</a>{% endblock %}
+            {% block boxBody %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Creationdate</th>
+                        <th>Active</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categories %}
+                    <tr>
+                        <td>
+                            {% if category.icon is not null %}
+                                <i class="fa fa-{{category.icon}}"></i>
+                            {% else %}
+                                <i class="fa fa-archive "></i>
+                            {% endif %}
+                        </td>
+                        <td><a href="{{ path('category_show', { 'id': category.id }) }}">{{ category.name }}</a></td>
+                        <td>{{ category.description }}</td>
+                        <td>{% if category.creationDate %}{{ category.creationDate|date('d-m-Y') }}{% endif %}</td>
+                        <td>{% if category.active %}Yes{% else %}No{% endif %}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('category_show', { 'id': category.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('category_edit', { 'id': category.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endblock %}
+        {% endembed %}
 
-            </div>
-        </div>
     </div>
     <div class="col-xs-3">
         {% embed '@gBlogTemplate/admin/snippets/info.html.twig' %}

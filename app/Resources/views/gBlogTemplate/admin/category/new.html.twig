@@ -1,38 +1,25 @@
 {% extends '@gBlogTemplate/admin/page.html.twig' %}
 
-{% block headerContent %}
-<div class="row">
-    <div class="col-xs-12">
-        <div class="small-box bg-green">
-            <div class="inner">
-                CATEGORIE
-            </div>
+{% block moduleName %}category{% endblock %}
 
-        </div>
-    </div>
-</div>
-<ol class="breadcrumb" style="margin-right:15px">
-    <li> <a href="{{ path('categories_index') }}"><i class="fa fa-archive"></i> Categorie</a> </li>
-    <li class="active">nuova</li>
-</ol>
+{% block breadcrumb %}
+    <li><i class="fa fa-{{ icons[block('moduleName')] }} margin-r-5"></i><a href="{{path('posts_index')}}">{{ block('moduleName') }}</a></li>
+    <li class="active">nuovo</li>
 {% endblock %}
 
 {% block mainContent %}
 <div class="row">
     <div class="col-xs-9">
-        <div class="box box-warning">
-            <div class="box-header with-border">
-                <a href="{{ path('categories_index') }}" class="btn btn-danger"><i class="fa fa-arrow-left"></i>Vedi tutte</a>
-            </div>
-            <div class="box-body">
+
+        {% embed '@gBlogTemplate/admin/snippets/box-default.html.twig' %}
+            {% block boxHeader %}<a href="{{ path('categories_index') }}" class="btn btn-lg btn-danger"><i class="fa fa-arrow-left margin-5-left"></i>inditero</a>{% endblock %}
+            {% block boxBody %}
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
                 <input type="submit" value="Aggiungi" class="btn btn-success" />
                 {{ form_end(form) }}
-
-            </div>
-        </div>
-
+            {% endblock %}
+        {% endembed %}
     </div>
 
 

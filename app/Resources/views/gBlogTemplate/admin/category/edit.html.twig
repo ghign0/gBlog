@@ -1,52 +1,31 @@
 {% extends '@gBlogTemplate/admin/page.html.twig' %}
 
-{% block headerContent %}
-<div class="row">
-    <div class="col-xs-12">
-        <div class="small-box bg-green">
-            <div class="inner">
-                CATEGORIE
-            </div>
+{% block moduleName %}category{% endblock %}
 
-        </div>
-    </div>
-</div>
-<ol class="breadcrumb" style="margin-right:15px">
-    <li> <a href="{{ path('categories_index') }}"><i class="fa fa-archive"></i> Categorie</a> </li>
+{% block breadcrumb %}
+    <li><i class="fa fa-{{ icons[block('moduleName')] }} margin-r-5"></i><a href="{{path('posts_index')}}">{{ block('moduleName') }}</a></li>
     <li class="active">modifica</li>
-    <li class="active">{{ category.id }}</li>
-</ol>
 {% endblock %}
 
 {% block mainContent %}
 <div class="row">
     <div class="col-xs-9">
-        <div class="box box-warning">
-            <div class="box-header">
-                <ul>
-                    <li>
-                        <a href="{{ path('categories_index') }}">Back to the list</a>
-                    </li>
-                    <li>
-                        {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
-                        {{ form_end(delete_form) }}
-                    </li>
-                </ul>
-
-            </div>
-            <div class="box-body">
-
+        {% embed '@gBlogTemplate/admin/snippets/box-default.html.twig' %}
+            {% block boxHeader %}<a href="{{ path('categories_index') }}" class="btn btn-lg  btn-danger"><i class="fa fa-arrow-left margin-5-left"></i>inditero</a>{% endblock %}
+            {% block boxBody %}
                 {{ form_start(edit_form) }}
                 {{ form_widget(edit_form) }}
                 <input type="submit" value="Edit" />
                 {{ form_end(edit_form) }}
-            </div>
-        </div>
+            {% endblock %}
+        {% endembed %}
+
     </div>
 
     <div class="col-xs-3">
-
+        {{ form_start(delete_form) }}
+        <button  type="submit" class="btn btn-block btn-warning" value="Delete"> <h4>Cancella categoria</h4> </button>
+        {{ form_end(delete_form) }}
     </div>
 </div>
 

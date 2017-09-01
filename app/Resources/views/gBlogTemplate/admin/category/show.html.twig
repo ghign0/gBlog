@@ -1,63 +1,57 @@
 {% extends '@gBlogTemplate/admin/page.html.twig' %}
 
-{% block headerContent %}
-<div class="row">
-    <div class="col-xs-12">
-        <div class="small-box bg-green">
-            <div class="inner">
-                CATEGORIE
-            </div>
+{% block moduleName %}category{% endblock %}
 
-        </div>
-    </div>
-</div>
-<ol class="breadcrumb" style="margin-right:15px">
-    <li> <a href="{{ path('categories_index') }}"><i class="fa fa-archive"></i> Categorie</a> </li>
-    <li class="active">dettagli</li>
-    <li class="active">{{ category.id }}</li>
-</ol>
+{% block breadcrumb %}
+    <li><i class="fa fa-{{ icons[block('moduleName')] }} margin-r-5"></i><a href="{{path('posts_index')}}">{{ block('moduleName') }}</a></li>
+    <li class="active">mostra</li>
 {% endblock %}
 
 {% block mainContent %}
 <div class="row">
 
     <div class="col-xs-9">
-        <div class="box box-primary">
-            <div class="box-header">
+        {% embed '@gBlogTemplate/admin/snippets/box-default.html.twig' %}
+            {% block boxHeader %}
                 <a href="{{ path('categories_index') }}" class="btn btn-danger"><i class="fa fa-arrow-left margin-r-5"></i>Vedi tutte</a>
                 <a href="{{ path('category_edit', { 'id': category.id }) }}" class="btn btn-warning"><i class="fa fa-edit marginr-5"></i>Edit</a>
-                {{ form_start(delete_form) }}
-                    <input type="submit" value="Delete">
-                {{ form_end(delete_form) }}
-            </div>
-            <div class="box-body">
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>Id</th>
-                            <td>{{ category.id }}</td>
-                        </tr>
-                        <tr>
-                            <th>Name</th>
-                            <td>{{ category.name }}</td>
-                        </tr>
-                        <tr>
-                            <th>Description</th>
-                            <td>{{ category.description }}</td>
-                        </tr>
-                        <tr>
-                            <th>Creationdate</th>
-                            <td>{% if category.creationDate %}{{ category.creationDate|date('Y-m-d') }}{% endif %}</td>
-                        </tr>
-                        <tr>
-                            <th>Active</th>
-                            <td>{% if category.active %}Yes{% else %}No{% endif %}</td>
-                        </tr>
-                    </tbody>
-                </table>
+            {% endblock %}
+            {% block boxBody %}
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ category.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ category.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ category.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Creationdate</th>
+                        <td>{% if category.creationDate %}{{ category.creationDate|date('Y-m-d') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Active</th>
+                        <td>{% if category.active %}Yes{% else %}No{% endif %}</td>
+                    </tr>
+                </tbody>
+            </table>
+            {% endblock %}
+        {% endembed %}
 
-            </div>
-        </div>
+
+    </div>
+
+
+    <div class="col-xs-3">
+        {{ form_start(delete_form) }}
+            <button class="btn btn-block" type="submit" value="Delete"><h4>Cancella categoria</h4></button>
+        {{ form_end(delete_form) }}
     </div>
 </div>
 

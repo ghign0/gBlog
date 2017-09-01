@@ -2,20 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>GBlog - administrator page</title>
+    <title>GBlog - {{ block('moduleName') }}</title>
 
     <link rel="stylesheet" href="{{ asset('dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/dist/css/AdminLTE.min.css')}}" >
     <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/dist/css/skins/_all-skins.min.css')}}" >
-    <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/dist/css/skins/skin-blue.min.css')}}" >
+    <!--<link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/dist/css/skins/skin-blue.min.css')}}" >-->
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% block css %}{% endblock %}
   </head>
-  <body class="skin-blue sidebar-mini wysihtml5-supported">
+  <!--<body class="skin-blue sidebar-mini wysihtml5-supported">-->
+    <body class="skin-black-light sidebar-mini wysihtml5-supported">
       <div class="wrapper">
           <header class="main-header">
-              <a href="{{path('admin_index')}}" class="logo">
+              <a href="{{ path('admin_index') }}" class="logo">
                   <span class="logo-mini">GB</span>
                   <span class="logo-lg">
                       <img src="" alt="gBlog logo">
@@ -52,7 +53,7 @@
                     </div>
 
                     <!--menu principale-->
-                    <ul class="sidebar-menu">
+                    <ul class="sidebar-menu" >
                         <li><a href="{{ path('admin_index') }}"><i class="fa fa-{{icons.home}} margin-r-5"></i>Home</a></li>
                         <li><a href="{{ path('posts_index') }}"><i class="fa fa-{{icons.post}} margin-r-5"></i>Post</a></li>
                         {% if is_granted('ROLE_SUPER_ADMIN') %}
@@ -73,12 +74,8 @@
                   {% block headerContent %}
                   <div class="row">
                       <div class="col-xs-12">
-                          <div class="small-box bg-green">
-                              <div class="inner">
-                                  {% block moduleName %}{% endblock %}
-                              </div>
+                          <h1> {% block moduleName %}{% endblock %}</h1>
 
-                          </div>
                       </div>
                   </div>
                   <ol class="breadcrumb" style="margin-right:15px">
