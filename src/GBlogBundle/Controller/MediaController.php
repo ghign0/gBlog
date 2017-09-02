@@ -45,10 +45,11 @@ class MediaController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-
-
             $file = $form['file']->getData();
-            $file->move($this->getParameter('media_dir'), $medium->getNome());
+            $filename = str_replace(' ', '-' ,strToLower($medium->getName())).'.'.$file->guessExtension();
+            $file->move($this->getParameter('media_dir'), $filename);
+
+            $medium->setFile($filename);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($medium);

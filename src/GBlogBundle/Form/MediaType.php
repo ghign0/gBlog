@@ -14,7 +14,7 @@ class MediaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nome')->add('placeholder')->add('tpye')->add('uploadDate')->add('path')
+        $builder->add('name')->add('placeholder')->add('tpye')->add('uploadDate')->add('path')
         ->add('file', FileType::class, []);
     }
 

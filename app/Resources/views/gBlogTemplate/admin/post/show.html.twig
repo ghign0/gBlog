@@ -50,6 +50,24 @@
         </tbody>
     </table>
 
+    <div class="row" >
+        <div class="col-xs-12" id="anteprima" style="border:1px solid #ccc;">
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>{{post.title}}</h1>
+                    <p class="text-muted"><i class="fa fa-user margin-r-5"></i>{{post.user}}, il {{post.publishDate|date('d-m-Y')}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    {{ testo|raw }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <ul>
         <li>
             <a href="{{ path('posts_index') }}">Back to the list</a>

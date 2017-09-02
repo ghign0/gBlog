@@ -1,6 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends '@gBlogTemplate/admin/page.html.twig' %}
 
-{% block body %}
+{% block moduleName %}media{% endblock %}
+
+{% block mainContent %}
     <h1>Medium</h1>
 
     <table>
@@ -11,7 +13,11 @@
             </tr>
             <tr>
                 <th>Nome</th>
-                <td>{{ medium.nome }}</td>
+                <td>{{ medium.name }}</td>
+            </tr>
+            <tr>
+                <th>anteprima</th>
+                <td><img src="{{asset('media/')}}{{medium.file}}" alt="" title="immagine"></td>
             </tr>
             <tr>
                 <th>Placeholder</th>

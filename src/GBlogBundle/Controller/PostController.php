@@ -39,10 +39,13 @@ class PostController extends Controller
      */
     public function newAction(Request $request)
     {
+        # get all media media
+        $em = $this->getDoctrine()->getManager();
+        $mediaList = $em->getRepository('GBlogBundle:Media')->findAll();
+
         $post = new Post();
         $form = $this->createForm('GBlogBundle\Form\PostType', $post);
         $form->handleRequest($request);
-
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -54,6 +57,7 @@ class PostController extends Controller
 
         return $this->render('@gBlogTemplate/admin/post/new.html.twig', array(
             'post' => $post,
+            'mediaList' => $mediaList,
             'form' => $form->createView(),
         ));
     }
@@ -68,8 +72,11 @@ class PostController extends Controller
     {
         $deleteForm = $this->createDeleteForm($post);
 
+        $testo = $this->prepareForWeb($post->getContent());
+
         return $this->render('@gBlogTemplate/admin/post/show.html.twig', array(
             'post' => $post,
+            'testo' => $testo,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -82,6 +89,11 @@ class PostController extends Controller
      */
     public function editAction(Request $request, Post $post)
     {
+
+        # get all media media
+        $em = $this->getDoctrine()->getManager();
+        $mediaList = $em->getRepository('GBlogBundle:Media')->findAll();
+
         $deleteForm = $this->createDeleteForm($post);
         $editForm = $this->createForm('GBlogBundle\Form\PostType', $post);
         $editForm->handleRequest($request);
@@ -94,6 +106,7 @@ class PostController extends Controller
 
         return $this->render('@gBlogTemplate/admin/post/edit.html.twig', array(
             'post' => $post,
+            'mediaList' => $mediaList,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -133,5 +146,26 @@ class PostController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+
+    public function prepareForWeb ( $content )
+    {
+        $content = nl2br($content);
+
+        # regex = all'interno delle quadre \[ \]  prendo ogni singolo carattere [] tranne la quadra ^\] per 0 o più volte *
+        # quindi => '/\[[^\]]*\]/'
+        # ora ho un array con tutti i media.
+        preg_match_all('/\[media=([^\]]*)\]/', $content , $mediaList, PREG_SET_ORDER);
+
+        foreach ($mediaList as $mediaItem) {
+            print_r($mediaItem);
+        }
+
+        # prendo da db i media che mi servono
+        $mediaList = $this->getDoctrine()->getManager()->getRepository('GBlogBundle:Media')->findBy(['placeholder' => ['ibrre', 'android_secret_code']] );
+        //var_dump($mediaList);
+
+        return $content;
     }
 }

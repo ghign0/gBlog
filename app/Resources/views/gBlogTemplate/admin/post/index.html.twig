@@ -13,9 +13,9 @@
                     <tr>
 
                         <th>Id</th>
+                        <th>Data creazione</th>
                         <th>Title</th>
                         <th>Slug</th>
-                        <th>Creato</th>
                         <th>Categoria</th>
                         <th>Status</th>
                         <th>Pbblicato il</th>
@@ -38,7 +38,7 @@
                         <td>
                             <a href="{{ path('post_show', { 'id': post.id }) }}" class="btn btn-default btn-xs" title="Anteprima della pagina"><i class="fa fa-file-o"></i></a>
                             <a href="{{ path('post_edit', { 'id': post.id }) }}" class="btn btn-warning btn-xs" title="Modifica il post"><i class="fa fa-edit"></i></a>
-                            
+
                         </td>
                     </tr>
                     {% endfor %}

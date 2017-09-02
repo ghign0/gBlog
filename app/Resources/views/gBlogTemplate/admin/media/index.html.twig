@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nome</th>
+                <th>Name</th>
                 <th>Placeholder</th>
                 <th>Tpye</th>
                 <th>Uploaddate</th>
@@ -21,7 +21,7 @@
         {% for medium in media %}
             <tr>
                 <td><a href="{{ path('media_show', { 'id': medium.id }) }}">{{ medium.id }}</a></td>
-                <td>{{ medium.nome }}</td>
+                <td>{{ medium.name }}</td>
                 <td>{{ medium.placeholder }}</td>
                 <td>{{ medium.tpye }}</td>
                 <td>{% if medium.uploadDate %}{{ medium.uploadDate|date('Y-m-d') }}{% endif %}</td>

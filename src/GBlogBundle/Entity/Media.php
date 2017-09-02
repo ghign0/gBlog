@@ -24,9 +24,9 @@ class Media
     /**
      * @var string
      *
-     * @ORM\Column(name="nome", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $nome;
+    private $name;
 
     /**
      * @var string
@@ -79,25 +79,25 @@ class Media
     /**
      * Set nome
      *
-     * @param string $nome
+     * @param string $name
      *
      * @return Media
      */
-    public function setNome($nome)
+    public function setName($name)
     {
-        $this->nome = $nome;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get nome
+     * Get name
      *
      * @return string
      */
-    public function getNome()
+    public function getName()
     {
-        return $this->nome;
+        return $this->name;
     }
 
     /**
