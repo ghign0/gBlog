@@ -156,7 +156,7 @@ class PostController extends Controller
         # regex = all'interno delle quadre \[ \]  prendo ogni singolo carattere [] tranne la quadra ^\] per 0 o più volte *
         # quindi => '/\[[^\]]*\]/'
         # ora ho un array con tutti i media.
-        preg_match_all('/\[media=([^\]]*)\]/', $content , $mediaList, PREG_SET_ORDER);
+        preg_match_all('/\[media=(\d*)\s*,\s*\[([^\]]*)\]\s*\]/', $content , $mediaList, PREG_SET_ORDER);
 
         foreach ($mediaList as $mediaItem) {
             print_r($mediaItem);
