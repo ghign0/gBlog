@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Medium controller.
  *
- * @Route("media")
+ * @Route("admin/media")
  */
 class MediaController extends Controller
 {

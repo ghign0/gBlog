@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Parameter controller.
  *
- * @Route("parameter")
+ * @Route("admin/parameter")
  */
 class ParameterController extends Controller
 {
