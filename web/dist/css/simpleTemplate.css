@@ -19,7 +19,12 @@ i.user-icon {
 
 section.card {
     padding: 1.5em;
-    box-shadow: 0 2px 2px #aaa;
+    border : 1px solid #d5d5d5;
     background-color: white;
     margin: 0 1rem 1rem;
+}
+
+section.card:hover {
+    border: none;
+    box-shadow: 0 2px 2px #aaa;
 }
