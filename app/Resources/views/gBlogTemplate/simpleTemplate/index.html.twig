@@ -17,6 +17,23 @@
     </div>
 </div>
 <div class="row">
+    {% for i in 1..2  %}
+    <div class="col-xs-12 col-md-6">
+        <section class="card">
+            <div class="card-header">
+
+            </div>
+            <h2>
+                {{ attribute(postList , 0).title }}
+            </h2>
+            <div class="card-body">
+                <p>questo sarebbe il post numero {{ i }}</p>
+            </div>
+        </section>
+    </div>
+    {% endfor %}
+</div>
+<div class="row">
     {% for i in 1..6  %}
     <div class="col-xs-12 col-md-6 col-lg-4">
         <section class="card">
@@ -27,7 +44,7 @@
                 {{ attribute(postList , 0).title }}
             </h2>
             <div class="card-body">
-                <p>questo sarebbe il secondo post</p>
+                <p>questo sarebbe il post numero {{ i }}</p>
             </div>
         </section>
     </div>

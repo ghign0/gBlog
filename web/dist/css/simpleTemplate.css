@@ -1,0 +1,25 @@
+body {
+    background-color: #f7f7f7;
+}
+
+i.icon {
+    font-size: 30px;
+    vertical-align: middle;
+}
+
+
+i.margin-r-5 {
+    margin-right:5px;
+}
+
+i.user-icon {
+    margin-right:10px;
+
+}
+
+section.card {
+    padding: 1.5em;
+    box-shadow: 0 2px 2px #aaa;
+    background-color: white;
+    margin: 0 1rem 1rem;
+}
