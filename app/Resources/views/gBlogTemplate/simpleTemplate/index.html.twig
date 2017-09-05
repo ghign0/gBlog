@@ -1,0 +1,36 @@
+{% extends '@template/base.html.twig' %}
+
+{% block menuContent %}
+<li class="active"><a href="{{ path('homepage') }}" ><i class="icon ion-home margin-r-5"></i>Home</a></li>
+{% endblock %}
+
+{% block mainContent %}
+<div class="row">
+    <div class="col-xs-12">
+        <section class="card primary-card">
+            <h1>{{ attribute(postList , 0).title }}</h1>
+            <div class="card-body">
+                {{ attribute(postList , 0).content|raw }}
+            </div>
+        </section>
+
+    </div>
+</div>
+<div class="row">
+    {% for i in 1..6  %}
+    <div class="col-xs-12 col-md-6 col-lg-4">
+        <section class="card">
+            <div class="card-header">
+
+            </div>
+            <h2>
+                {{ attribute(postList , 0).title }}
+            </h2>
+            <div class="card-body">
+                <p>questo sarebbe il secondo post</p>
+            </div>
+        </section>
+    </div>
+    {% endfor %}
+</div>
+</div>{% endblock %}

@@ -17,9 +17,9 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository('GBlogBundle:Category')->findAll();
-        #$postList = $em->getRepository('GBlogBundle:Post')->findAll());
+        $postList = $em->getRepository('GBlogBundle:Post')->findAll();
         return $this->render('@template/index.html.twig', [
-            #'postList' => $postList,
+            'postList' => $postList,
             'categories' => $categories,
         ]);
     }
