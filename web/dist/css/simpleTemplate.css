@@ -2,6 +2,10 @@ body {
     background-color: #f7f7f7;
 }
 
+nav {
+    box-shadow: 0 2px 0px #aaa;
+}
+
 i.icon {
     font-size: 30px;
     vertical-align: middle;
@@ -19,12 +23,13 @@ i.user-icon {
 
 section.card {
     padding: 1.5em;
-    border : 1px solid #d5d5d5;
+    border :1px solid #d5d5d5;
     background-color: white;
     margin: 0 1rem 1rem;
 }
 
 section.card:hover {
     border: none;
+    border :1px solid #f7f7f7;
     box-shadow: 0 2px 2px #aaa;
 }

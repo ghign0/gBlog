@@ -27,6 +27,8 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
+                      <li><a href="{{ path('homepage') }}" ><i class="icon ion-home margin-r-5"></i>Home</a></li>
+                      <li ><a href="{{ path('categories') }}" ><i class="icon ion-archive margin-r-5"></i>Categorie</a></li>
                       {% block menuContent %}{% endblock %}
                   </ul>
 
@@ -48,7 +50,7 @@
         </header>
         <div class="container">
             {% block mainContent %}{% endblock %}
-            
+
         <script type="text/javascript" src="{{ asset('dist/js/jquery.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
     </body>

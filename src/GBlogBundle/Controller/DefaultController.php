@@ -24,6 +24,17 @@ class DefaultController extends Controller
         ]);
     }
 
+    /**
+     * list all categories with posts
+     * @Route("categories", name="categories")
+     * @Method("GET")
+     * @return [type] [description]
+     */
+    public function categoriesAction()
+    {
+        return $this->render('@template/categories.html.twig', []);
+    }
+
 
     /**
      * list all post by category
