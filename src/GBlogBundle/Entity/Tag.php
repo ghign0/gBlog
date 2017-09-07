@@ -32,7 +32,7 @@ class Tag
     /**
      * @var string
      *
-     * @ORM\Column(name="note", type="text")
+     * @ORM\Column(name="note", type="text", nullable=true)
      */
     private $note;
 
@@ -112,5 +112,10 @@ class Tag
     public function getPosts()
     {
         return $this->posts;
+    }
+
+    public function __toString()
+    {
+        return sprintf('%s', $this->getName() );
     }
 }

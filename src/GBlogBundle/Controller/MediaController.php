@@ -31,6 +31,23 @@ class MediaController extends Controller
         ));
     }
 
+
+    /**
+    * Show media list when browsing in post conent
+    *
+    * @Route("browse", name="media_browse")
+    */
+    public function browseAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $media = $em->getRepository('GBlogBundle:Media')->findAll();
+
+        return $this->render('@gBlogTemplate/admin/media/browse.html.twig', array(
+            'media' => $media,
+        ));
+    }
+
     /**
      * Creates a new medium entity.
      *
@@ -79,6 +96,7 @@ class MediaController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
 
     /**
      * Displays a form to edit an existing medium entity.

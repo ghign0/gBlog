@@ -1,10 +1,8 @@
-{% extends '@blogTemplate/admin/page.html.twig' %}
+{% extends '@gBlogTemplate/admin/page.html.twig' %}
 
 {% block moduleName %}user{% endblock %}
 
-{% block body %}
-    <h1>User</h1>
-
+{% block mainContent %}
     <table>
         <tbody>
             <tr>
@@ -20,10 +18,6 @@
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
                 <th>Role</th>
                 <td>{{ user.role }}</td>
             </tr>
@@ -31,12 +25,16 @@
                 <th>Active</th>
                 <td>{% if user.active %}Yes{% else %}No{% endif %}</td>
             </tr>
+            <tr>
+                <th>Post scritti</th>
+                <td>{{user.posts|length}}</td>
+            </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('user_index') }}">Back to the list</a>
+            <a href="{{ path('users_index') }}">Back to the list</a>
         </li>
         <li>
             <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>

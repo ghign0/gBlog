@@ -48,7 +48,7 @@ class TagController extends Controller
             $em->persist($tag);
             $em->flush();
 
-            return $this->redirectToRoute('tag_show', array('id' => $tag->getId()));
+            return $this->redirectToRoute('tags_index');
         }
 
         return $this->render('@gBlogTemplate/admin/tag/new.html.twig', array(

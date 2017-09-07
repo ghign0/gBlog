@@ -274,4 +274,9 @@ class Post
     {
         return $this->tags;
     }
+
+    public function __toString()
+    {
+        return sprintf('%s', $this->getTitle() );
+    }
 }
