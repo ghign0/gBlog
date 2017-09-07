@@ -1,5 +1,9 @@
 {% extends '@gBlogTemplate/admin/page.html.twig' %}
 
+{% block css %}
+    <script src="//cdn.ckeditor.com/4.7.2/standard/ckeditor.js"></script>
+{% endblock %}
+
 {% block moduleName %}post{% endblock %}
 
 {% block breadcrumb %}
@@ -73,6 +77,13 @@
                     <div class="col-xs-12">
                         {{ form_label( form.content ,null, {'label_attr': {'class': 'label-control '}}  ) }}
                         {{ form_widget( form.content, {'attr' : {'class' : 'form-control'}} )}}
+                        <script>
+                           // Replace the <textarea id="editor1"> with a CKEditor
+                           // instance, using default configuration.
+                           CKEDITOR.replace( 'gblogbundle_post_content' , {
+                               'filebrowserImageBrowseUrl' : '{{path('media_index')}}',
+                           } );
+                       </script>
                     </div>
                 </div>
 
