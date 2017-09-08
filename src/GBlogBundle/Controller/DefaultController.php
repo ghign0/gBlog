@@ -42,10 +42,12 @@ class DefaultController extends Controller
      * @Method("GET")
      * @return [type] [description]
      */
-    public function categoryAction(Category $category)
+    public function categoryAction( $category )
     {
+        $cat = new Category();
         $em = $this->getDoctrine()->getManager();
-        $postList = $em->getRepository('GBlogBundle:Post')->findBy(['category' => $category->getId() ]);
+        $cat = $em->getRepository('GBlogBundle:Category')->findOneBy(['name' => $category]);
+        $postList = $em->getRepository('GBlogBundle:Post')->findBy(['category' => $cat->getId() ]);
         $categories = $em->getRepository('GBlogBundle:Category')->findAll();
         return $this->render('@template/index.html.twig' ,[
             'postList' => $postList,
@@ -59,11 +61,21 @@ class DefaultController extends Controller
      * @param  Post   $post [description]
      * @return [type]       [description]
      *
-     * @Route({cateogry}/{title}, name="view_post" )
+     * @Route("{category}/{slug}", name="view_post" )
      * @Method("GET")
      */
-    public function viewPostAction (Post $post)
+    public function viewPostAction ( $category , $slug )
     {
-        return $this->render('@template/post.html.twig')
+        $post = new Post();
+        $em = $this->getDoctrine()->getManager();
+        $post = $em->getRepository('GBlogBundle:Post')->findOneBy(['slug' => $slug ]);
+
+        return ($post->getCategory()->getName() === $category ) ?
+            $this->render('@template/post.html.twig', [
+                'post' => $post
+            ]) :
+            $this->render('@template/errors/404.html.twig');
     }
+
+
 }

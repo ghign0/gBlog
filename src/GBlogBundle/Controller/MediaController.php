@@ -35,7 +35,7 @@ class MediaController extends Controller
     /**
     * Show media list when browsing in post conent
     *
-    * @Route("browse", name="media_browse")
+    * @Route("/browse", name="media_browse")
     */
     public function browseAction()
     {

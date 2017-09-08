@@ -15,100 +15,114 @@
 {% block mainContent %}
 <div class="row">
     <div class="col-xs-9">
-        {% embed '@gBlogTemplate/admin/snippets/box-default.html.twig' %}
-            {% block boxHeader %}<h3 class="box-title"> <i class="fa fa-file-text-o margin-r-5"></i>Modifica post</h3>{% endblock %}
-            {% block boxBody %}
-            {{ form_start(edit_form) }}
-                <div class="row form-group">
-                    <div class="col-xs-12">
-                        {{ form_label( edit_form.title ,null, {'label_attr': {'class': 'label-control '}}  ) }}
-                        {{ form_widget( edit_form.title, {'attr' : {'class' : 'form-control input-lg'}} )}}
+        {{ form_start(edit_form) }}
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"> <a href="#general" data-toggle="tab">General</a> </li>
+                <li><a href="#media" data-toggle="tab">Media</a></li>
+                <li><a href="#meta" data-toggle="tab">Meta</a></li>
+                <li><a href="#more" data-toggle="tab">More</a></li>
+            </ul>
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="general">
+
+                    <div class="row form-group">
+                        <div class="col-xs-12">
+                            {{ form_label( edit_form.title ,null, {'label_attr': {'class': 'label-control '}}  ) }}
+                            {{ form_widget( edit_form.title, {'attr' : {'class' : 'form-control input-lg'}} )}}
+                        </div>
                     </div>
+
+                    <div class="row form-group">
+                        <div class="col-xs-12">
+                            {{ form_label( edit_form.slug ,null, {'label_attr': {'class': 'label-control '}}  ) }}
+                            {{ form_widget( edit_form.slug, {'attr' : {'class' : 'form-control'}} )}}
+                            <p class="help-block">
+                                <i class="fa fa-question-circle margin-r-5"> </i>Lo slug serve per dare l'URL
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-xs-2">
+                            {{ form_label( edit_form.category ,null, {'label_attr': {'class': 'label-control '}}  ) }}
+                            {{ form_widget( edit_form.category, {'attr' : {'class' : 'form-control'}} )}}
+
+                        </div>
+
+                        <div class="col-xs-2 col-xs-offset-1">
+                            {{ form_label( edit_form.user ,null, {'label_attr': {'class': 'label-control '}}  ) }}
+                            {{ form_widget( edit_form.user, {'attr' : {'class' : 'form-control'} } )}}
+
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-xs-2">
+                            {{ form_label( edit_form.creationDate ,null, {'label_attr': {'class': 'label-control '}}  ) }}
+                            {{ form_widget( edit_form.creationDate, {'attr' : {'class' : 'form-control'}} )}}
+
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-xs-2">
+                            {{ form_label( edit_form.status ,null, {'label_attr': {'class': 'label-control '}}  ) }}
+                            {{ form_widget( edit_form.status, {'attr' : {'class' : 'form-control'}} )}}
+
+                        </div>
+                        <div class="col-xs-2 col-xs-offset-1">
+                            {{ form_label( edit_form.publishDate ,null, {'label_attr': {'class': 'label-control '}}  ) }}
+                            {{ form_widget( edit_form.publishDate, {'attr' : {'class' : 'form-control'}} )}}
+
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-xs-12">
+                            {{ form_label( edit_form.content ,null, {'label_attr': {'class': 'label-control '}}  ) }}
+                            {{ form_widget( edit_form.content, {'attr' : {'class' : 'form-control'}} )}}
+                            <script>
+                               // Replace the <textarea id="editor1"> with a CKEditor
+                               // instance, using default configuration.
+                               CKEDITOR.replace( 'gblogbundle_post_content' , {
+                                    'filebrowserImageBrowseUrl' : '{{path('media_browse')}}',
+                                } );
+                           </script>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-xs-3">
+                            {{ form_label( edit_form.tags ,null, {'label_attr': {'class': 'label-control '}}  ) }}
+                            {{ form_widget( edit_form.tags, {'attr' : {'class' : 'form-control'}} )}}
+                        </div>
+                    </div>
+
                 </div>
-
-                <div class="row form-group">
-                    <div class="col-xs-12">
-                        {{ form_label( edit_form.slug ,null, {'label_attr': {'class': 'label-control '}}  ) }}
-                        {{ form_widget( edit_form.slug, {'attr' : {'class' : 'form-control'}} )}}
-                        <p class="help-block">
-                            <i class="fa fa-question-circle margin-r-5"> </i>Lo slug serve per dare l'URL
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row form-group">
-                    <div class="col-xs-2">
-                        {{ form_label( edit_form.category ,null, {'label_attr': {'class': 'label-control '}}  ) }}
-                        {{ form_widget( edit_form.category, {'attr' : {'class' : 'form-control'}} )}}
-
-                    </div>
-
-                    <div class="col-xs-2 col-xs-offset-1">
-                        {{ form_label( edit_form.user ,null, {'label_attr': {'class': 'label-control '}}  ) }}
-                        {{ form_widget( edit_form.user, {'attr' : {'class' : 'form-control'} } )}}
-
-                    </div>
-
+                <div class="tab-pane" id="media">
 
                 </div>
+                <div class="tab-pane" id="meta">
 
-                <div class="row form-group">
-                    <div class="col-xs-2">
-                        {{ form_label( edit_form.creationDate ,null, {'label_attr': {'class': 'label-control '}}  ) }}
-                        {{ form_widget( edit_form.creationDate, {'attr' : {'class' : 'form-control'}} )}}
-
-                    </div>
                 </div>
+                <div class="tab-pane" id="more">
 
-                <div class="row form-group">
-                    <div class="col-xs-2">
-                        {{ form_label( edit_form.status ,null, {'label_attr': {'class': 'label-control '}}  ) }}
-                        {{ form_widget( edit_form.status, {'attr' : {'class' : 'form-control'}} )}}
-
-                    </div>
-                    <div class="col-xs-2 col-xs-offset-1">
-                        {{ form_label( edit_form.publishDate ,null, {'label_attr': {'class': 'label-control '}}  ) }}
-                        {{ form_widget( edit_form.publishDate, {'attr' : {'class' : 'form-control'}} )}}
-
-                    </div>
                 </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-xs-2 col-xs-offset-8">
+                <a href="{{ path('posts_index') }}" class="btn btn-lg btn-danger pull-right"><i class="fa fa-arrow-left margin-r-5"></i>Anulla</a>
 
-                <div class="row form-group">
-                    <div class="col-xs-12">
-                        {{ form_label( edit_form.content ,null, {'label_attr': {'class': 'label-control '}}  ) }}
-                        {{ form_widget( edit_form.content, {'attr' : {'class' : 'form-control'}} )}}
-                        <script>
-                           // Replace the <textarea id="editor1"> with a CKEditor
-                           // instance, using default configuration.
-                           CKEDITOR.replace( 'gblogbundle_post_content' , {
-                                'filebrowserImageBrowseUrl' : '{{path('media_browse')}}',
-                            } );
-                       </script>
-                    </div>
-                </div>
+            </div>
 
-                <div class="row form-group">
-                    <div class="col-xs-3">
-                        {{ form_label( edit_form.tags ,null, {'label_attr': {'class': 'label-control '}}  ) }}
-                        {{ form_widget( edit_form.tags, {'attr' : {'class' : 'form-control'}} )}}
-                    </div>
-                </div>
-
-
-                <div class="row form-group">
-                    <div class="col-xs-2 col-xs-offset-8">
-                        <a href="{{ path('posts_index') }}" class="btn btn-lg btn-danger pull-right"><i class="fa fa-arrow-left margin-r-5"></i>Anulla</a>
-
-                    </div>
-
-                    <div class="col-xs-2">
-                        <button type="submit" class="btn btn-lg btn-success"><i class="fa fa-save margin-r-5"></i>Salva</button>
-                    </div>
-                </div>
-                {{ form_end(edit_form) }}
-            {% endblock %}
-        {% endembed %}
-
+            <div class="col-xs-2">
+                <button type="submit" class="btn btn-lg btn-success"><i class="fa fa-save margin-r-5"></i>Salva</button>
+            </div>
+        </div>
+        {{ form_end(edit_form) }}
     </div>
 
 
