@@ -36,9 +36,8 @@
                         <td>{{ post.publishDate|date('d-m-Y')}}</td>
                         <td>{{ post.user.username}}</td>
                         <td>
-                            <a href="{{ path('post_show', { 'id': post.id }) }}" class="btn btn-default btn-xs" title="Anteprima della pagina"><i class="fa fa-file-o"></i></a>
-                            <a href="{{ path('post_edit', { 'id': post.id }) }}" class="btn btn-warning btn-xs" title="Modifica il post"><i class="fa fa-edit"></i></a>
-
+                            <a href="{{ path('post_show', { 'id': post.id }) }}" class="btn btn-flat btn-primary" title="Anteprima della pagina"><i class="fa fa-file-o"></i></a>
+                            <a href="{{ path('post_edit', { 'id': post.id }) }}" class="btn btn-flat btn-warning" title="Modifica il post"><i class="fa fa-edit"></i></a>
                         </td>
                     </tr>
                     {% endfor %}

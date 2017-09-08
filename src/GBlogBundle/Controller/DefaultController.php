@@ -38,7 +38,7 @@ class DefaultController extends Controller
 
     /**
      * list all post by category
-     * @Route("category/{name}", name="post_by_category")
+     * @Route("{category}", name="view_posts_by_cateogry")
      * @Method("GET")
      * @return [type] [description]
      */
@@ -51,5 +51,19 @@ class DefaultController extends Controller
             'postList' => $postList,
             'categories' => $categories
         ]);
+    }
+
+
+    /**
+     * [viewPostAction description]
+     * @param  Post   $post [description]
+     * @return [type]       [description]
+     *
+     * @Route({cateogry}/{title}, name="view_post" )
+     * @Method("GET")
+     */
+    public function viewPostAction (Post $post)
+    {
+        return $this->render('@template/post.html.twig')
     }
 }

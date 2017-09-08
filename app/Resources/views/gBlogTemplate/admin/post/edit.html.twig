@@ -80,7 +80,9 @@
                         <script>
                            // Replace the <textarea id="editor1"> with a CKEditor
                            // instance, using default configuration.
-                           CKEDITOR.replace( 'gblogbundle_post_content' );
+                           CKEDITOR.replace( 'gblogbundle_post_content' , {
+                                'filebrowserImageBrowseUrl' : '{{path('media_browse')}}',
+                            } );
                        </script>
                     </div>
                 </div>

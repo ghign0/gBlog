@@ -31,14 +31,8 @@
                         <td>{{ user.posts | length }}</td>
                         <td>{% if user.active %}Yes{% else %}No{% endif %}</td>
                         <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('user_show', { 'id': user.id }) }}">show</a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('user_edit', { 'id': user.id }) }}">edit</a>
-                                </li>
-                            </ul>
+                            <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-flat btn-primary" title="mostra dettagli"><i class="fa fa-file-o"></i></a>
+                            <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-flat btn-warning" title="modifica utente"><i class="fa fa-edit"></i></a>
                         </td>
                     </tr>
                     {% endfor %}
