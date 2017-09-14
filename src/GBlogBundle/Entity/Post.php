@@ -73,7 +73,7 @@ class Post
     private $user;
 
     /**
-    * @var \User
+    * @var \Category
     *
     * @ORM\ManyToOne(targetEntity="Category", inversedBy="posts")
     * @ORM\JoinColumn(name="idCategory", referencedColumnName="id")
@@ -87,6 +87,14 @@ class Post
     * @ORM\JoinTable(name="tags")
     */
     private $tags;
+
+
+    /**
+    * @var \Media
+    * @ORM\ManyToOne(targetEntity="Media", inversedBy="posts")
+    * @ORM\JoinColumn(name="idMedia" , referencedColumnName="id")
+    */
+    private $cover;
 
     public function __construct()
     {
@@ -273,6 +281,18 @@ class Post
     public function getTags()
     {
         return $this->tags;
+    }
+
+
+    public function setCover( $cover )
+    {
+        $this->cover = $cover;
+        return $this;
+    }
+
+    public function getCover()
+    {
+        return $this->cover;
     }
 
     public function __toString()

@@ -3,6 +3,7 @@
 namespace GBlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection as ArrayCollection;
 
 /**
  * Media
@@ -64,6 +65,18 @@ class Media
      */
     private $file;
 
+    /**
+    * @var ArrayCollection
+    *
+    * @ORM\OneToMany(targetEntity="Post", mappedBy="cover")
+    */
+    private $posts;
+
+
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
+    }
 
 
     /**
@@ -205,6 +218,12 @@ class Media
     {
         $this->file=$file;
         return $this;
+    }
+
+    function __toString()
+    {
+        //return html_entity_decode('<img src="/web/media_dir'.$this->getFile().'" width="100px">');
+        return sprintf('%s', $this->getFile() );
     }
 
 

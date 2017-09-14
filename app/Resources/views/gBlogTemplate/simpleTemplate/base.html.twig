@@ -34,13 +34,18 @@
 
                   <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon ion-person user-icon"></i>{{app.user.username}}</a>
-                      <ul class="dropdown-menu">
-                          <li><a href="{{path('user_show' , {'id': app.user.id })}}">Profilo</a></li>
-                          <li><a href="{{path('admin_index')}}">Area admin</a></li>
-                          <li role="separator" class="divider"></li>
-                          <li><a href="{{path('logout' )}}">Logout</a></li>
-                      </ul>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon ion-person user-icon"></i></a>
+                        <ul class="dropdown-menu">
+                        {% if app.user %}
+                            <li><a href="{{path('user_show' , {'id': app.user.id })}}">Profilo</a></li>
+                            <li><a href="{{path('admin_index')}}">Area admin</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{path('logout' )}}">Logout</a></li>
+
+                        {% else %}
+                            <li><a href="{{path('login')}}">Login</a></li>
+                        {% endif %}
+                        </ul>
                     </li>
                   </ul>
                 </div><!-- /.navbar-collapse -->

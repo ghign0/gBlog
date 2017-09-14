@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 
 class PostType extends AbstractType
 {
@@ -50,7 +51,12 @@ class PostType extends AbstractType
         ->add('user', null, [
             'label' => 'Scritto da'
         ])
-        ->add('tags');
+        ->add('tags')
+        ->add('cover', null, [
+            'expanded' =>true,
+            'multiple' => false,
+            'label' => 'Immagine di copertina'
+        ]);
     }
 
     /**
