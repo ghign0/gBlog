@@ -3,9 +3,9 @@
 {% block moduleName %}user{% endblock %}
 
 {% block mainContent %}
-<div class="content">
+<div class="row">
 
-    <div class="col-xs-9">
+    <div class="col-xs-12">
         {% embed '@gBlogTemplate/admin/snippets/box-default.html.twig' %}
             {% block boxHeader %} <a href="{{ path('user_new') }}" class="btn btn-lg"> <i class="fa fa-plus margin-r-5"></i>Nuovo utente </a> {% endblock %}
             {% block boxBody %}
@@ -41,11 +41,6 @@
             {% endblock %}
         {% endembed %}
     </div>
-    <div class="col-xs-3">
-
-    </div>
-
-
 
 </div>
 {% endblock %}

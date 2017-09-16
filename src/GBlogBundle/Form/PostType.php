@@ -48,6 +48,9 @@ class PostType extends AbstractType
         ->add('content',null, [
             'label'  => 'Testo'
         ])
+        ->add('plot',null, [
+            'label'  => 'descrizione breve'
+        ])
         ->add('user', null, [
             'label' => 'Scritto da'
         ])

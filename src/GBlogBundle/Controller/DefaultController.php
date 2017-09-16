@@ -69,9 +69,11 @@ class DefaultController extends Controller
         $post = new Post();
         $em = $this->getDoctrine()->getManager();
         $post = $em->getRepository('GBlogBundle:Post')->findOneBy(['slug' => $slug ]);
+        $categories = $em->getRepository('GBlogBundle:Category')->findAll();
 
         return ($post->getCategory()->getName() === $category ) ?
             $this->render('@template/post.html.twig', [
+                'categories' => $categories,
                 'post' => $post
             ]) :
             $this->render('@template/errors/404.html.twig');

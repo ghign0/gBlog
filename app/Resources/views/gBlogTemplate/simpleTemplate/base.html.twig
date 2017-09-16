@@ -7,10 +7,11 @@
         <link rel="stylesheet" href="{{ asset('dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('dist/css/simpleTemplate.css') }}">
         <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     </head>
     <body>
-        <header>
+        <header style= "background: url( {{asset('media/')}}{% if app.request.get('_route') == 'view_post' %}{{post.cover}}{% else %}header-background.png{% endif %} ); background-size:cover; background-position: center;">
             <nav class="navbar navbar-default">
               <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -28,13 +29,22 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
                       <li><a href="{{ path('homepage') }}" ><i class="icon ion-home margin-r-5"></i>Home</a></li>
-                      <li ><a href="{{ path('categories') }}" ><i class="icon ion-archive margin-r-5"></i>Categorie</a></li>
+                      <li class="dropdown">
+                          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#" >
+                              <i class="icon ion-archive margin-r-5"></i>Categorie</a>
+                          <ul class="dropdown-menu">
+                              {% for cat in categories %}
+                              <li><a href="{{ path('view_posts_by_cateogry', {'category': cat.name}) }}"> <i class="fa fa-{{cat.icon}} margin-r-5"></i> {{cat.name}}</a></li>
+                              {% endfor %}
+                          </ul>
+                      </li>
                       {% block menuContent %}{% endblock %}
                   </ul>
 
                   <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon ion-person user-icon"></i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon ion-person user-icon"></i></a>
                         <ul class="dropdown-menu">
                         {% if app.user %}
                             <li><a href="{{path('user_show' , {'id': app.user.id })}}">Profilo</a></li>
@@ -53,8 +63,11 @@
             </nav>
 
         </header>
+
         <div class="container">
+            {% block titleContet %}{% endblock %}
             {% block mainContent %}{% endblock %}
+        </div>
 
         <script type="text/javascript" src="{{ asset('dist/js/jquery.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('dist/js/bootstrap.min.js') }}"></script>

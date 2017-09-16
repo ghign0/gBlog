@@ -60,6 +60,13 @@ class Post
     /**
      * @var string
      *
+     * @ORM\Column(name = "plot" , type="text")
+     */
+    private $plot;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="content", type="text")
      */
     private $content;
@@ -95,6 +102,8 @@ class Post
     * @ORM\JoinColumn(name="idMedia" , referencedColumnName="id")
     */
     private $cover;
+
+
 
     public function __construct()
     {
@@ -229,6 +238,18 @@ class Post
     public function getPublishDate()
     {
         return $this->publishDate;
+    }
+
+
+    public function setPlot( $plot )
+    {
+        $this->plot  = $plot;
+        return $this;
+    }
+
+    public function getPlot()
+    {
+        return $this->plot;
     }
 
     /**

@@ -19,7 +19,7 @@
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li class="active"> <a href="#general" data-toggle="tab">General</a> </li>
-                <li><a href="#media" data-toggle="tab">Media</a></li>
+                <li><a href="#content" data-toggle="tab">Content</a></li>
                 <li><a href="#meta" data-toggle="tab">Meta</a></li>
                 <li><a href="#more" data-toggle="tab">More</a></li>
             </ul>
@@ -80,6 +80,41 @@
                     </div>
 
                     <div class="row form-group">
+                        <div class="col-xs-3">
+                            {{ form_label( edit_form.tags ,null, {'label_attr': {'class': 'label-control '}}  ) }}
+                            {{ form_widget( edit_form.tags, {'attr' : {'class' : 'form-control'}} )}}
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-xs-12">
+                            {{ form_label(edit_form.cover, null, {'label_attr' : {'class': 'label-control'}}) }}
+                            {{ form_widget( edit_form.cover)}}
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="content">
+                    <div class="row form-group">
+                        <div class="col-xs-12">
+                            {{ form_label( edit_form.plot ,null, {'label_attr': {'class': 'label-control '}}  ) }}
+                            {{ form_widget( edit_form.plot, {'attr' : {'class' : 'form-control'}} )}}
+                            <script>
+                               // Replace the <textarea id="editor1"> with a CKEditor
+                               // instance, using default configuration.
+                               CKEDITOR.replace( 'gblogbundle_post_plot' , {
+                                   'filebrowserImageBrowseUrl' : '{{path('media_browse')}}',
+                                   'toolbar' : [
+                                       { name: 'document', items: ['Source'] },
+                                       { name: 'paragraph', items: ['Bold', 'Italic', 'Strike'] },
+                                   ]
+                               } );
+                           </script>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
                         <div class="col-xs-12">
                             {{ form_label( edit_form.content ,null, {'label_attr': {'class': 'label-control '}}  ) }}
                             {{ form_widget( edit_form.content, {'attr' : {'class' : 'form-control'}} )}}
@@ -92,17 +127,6 @@
                            </script>
                         </div>
                     </div>
-
-                    <div class="row form-group">
-                        <div class="col-xs-3">
-                            {{ form_label( edit_form.tags ,null, {'label_attr': {'class': 'label-control '}}  ) }}
-                            {{ form_widget( edit_form.tags, {'attr' : {'class' : 'form-control'}} )}}
-                        </div>
-                    </div>
-
-                </div>
-                <div class="tab-pane" id="media">
-
                 </div>
                 <div class="tab-pane" id="meta">
 

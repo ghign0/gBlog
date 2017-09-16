@@ -83,6 +83,7 @@ class UserController extends Controller
     {
         $deleteForm = $this->createDeleteForm($user);
         $editForm = $this->createForm('GBlogBundle\Form\UserType', $user);
+        $editForm->remove('password');
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

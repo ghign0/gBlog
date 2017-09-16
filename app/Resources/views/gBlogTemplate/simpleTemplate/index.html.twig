@@ -1,25 +1,35 @@
 {% extends '@template/base.html.twig' %}
 
-{% block menuContent %}
+{% block menuContent %}{% endblock %}
 
+
+{% block titleContet %}
+<div class="article-header">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="site-name">Site name</h1>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block mainContent %}
 <div class="row">
     <div class="col-xs-12">
-        <ul>
-            {% for cat in categories %}
-            <li><a href="{{ path('view_posts_by_cateogry', {'category': cat.name}) }}">{{cat.name}}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-        <section class="card primary-card">
-            <h1>{{ attribute(postList , 0).title }}</h1>
-            <div class="card-body">
-                {{ attribute(postList , 0).content|raw }}
+        <section class="row card card-primary">
+            <div class="col-xs-4 card-cover">
+                <img src="{{asset('media/')}}{{ attribute(postList, 2).cover }}" alt="{{ attribute(postList, 2).cover.name }}">
+            </div>
+            <div class="col-xs-8 card-content ">
+                <div class="card-header">
+                    <h2>{{ attribute(postList , 2).title }}</h1>
+                </div>
+                <div class="card-body">
+                    {{ attribute(postList , 2).plot|raw }}
+                </div>
+            </div>
+            <div class="col-xs-1 pull-right text-muted text-right card-link">
+                <a href="{{ path('view_post', {'category' : attribute(postList , 2).category, 'slug' : attribute(postList , 2).slug }) }}">leggi</a>
             </div>
         </section>
 
@@ -28,14 +38,20 @@
 <div class="row">
     {% for i in 1..2  %}
     <div class="col-xs-12 col-md-6">
-        <section class="card">
-            <div class="card-header">
-                <h2>
-                    {{ attribute(postList , 0).title }}
-                </h2>
+        <section class="row card card-second">
+            <div class="col-xs-4 card-cover">
+                <img src="{{asset('media/')}}{{ attribute(postList, 0).cover }}" alt="{{ attribute(postList, 0).cover.name }}">
             </div>
-            <div class="card-body">
-                <p>questo sarebbe il post numero {{ i }}</p>
+            <div class="col-xs-8 card-content ">
+                <div class="card-header">
+                    <h2>{{ attribute(postList , 0).title }}</h1>
+                </div>
+                <div class="card-body">
+                    {{ attribute(postList , 0).plot|raw }}
+                </div>
+            </div>
+            <div class="col-xs-1 pull-right text-muted text-right card-link">
+                <a href="{{ path('view_post', {'category' : attribute(postList , 0).category, 'slug' : attribute(postList , 0).slug }) }}">leggi</a>
             </div>
         </section>
     </div>
@@ -44,14 +60,20 @@
 <div class="row">
     {% for i in 1..6  %}
     <div class="col-xs-12 col-md-6 col-lg-4">
-        <section class="card">
-            <div class="card-header">
-                <h2>
-                    {{ attribute(postList , 0).title }}
-                </h2>
+        <section class="row card card-third">
+            <div class="col-xs-12 card-cover">
+                <img src="{{asset('media/')}}{{ attribute(postList, 1).cover }}" alt="{{ attribute(postList, 1).cover.name }}">
             </div>
-            <div class="card-body">
-                <p>questo sarebbe il post numero {{ i }}</p>
+            <div class="col-xs-12 card-content ">
+                <div class="card-header">
+                    <h2>{{ attribute(postList , 1).title }}</h1>
+                </div>
+                <div class="card-body">
+                    {{ attribute(postList , 1).plot|raw }}
+                </div>
+            </div>
+            <div class="col-xs-3 pull-right text-muted text-right card-link">
+                <a href="{{ path('view_post', {'category' : attribute(postList , 1).category, 'slug' : attribute(postList , 1).slug }) }}">leggi</a>
             </div>
         </section>
     </div>

@@ -98,6 +98,25 @@
                 <div class="tab-pane" id="content">
                     <div class="row form-group">
                         <div class="col-xs-12">
+                            {{ form_label( form.plot ,null, {'label_attr': {'class': 'label-control '}}  ) }}
+                            {{ form_widget( form.plot, {'attr' : {'class' : 'form-control'}} )}}
+                            <script>
+                               // Replace the <textarea id="editor1"> with a CKEditor
+                               // instance, using default configuration.
+                               CKEDITOR.replace( 'gblogbundle_post_plot' , {
+                                   'filebrowserImageBrowseUrl' : '{{path('media_browse')}}',
+                                   'toolbar' : [
+                                       { name: 'document', items: ['Source'] },
+                                       { name: 'paragraph', items: ['Bold', 'Italic', 'Strike'] },
+                                   ]
+                               } );
+                           </script>
+                        </div>
+                    </div>
+
+
+                    <div class="row form-group">
+                        <div class="col-xs-12">
                             {{ form_label( form.content ,null, {'label_attr': {'class': 'label-control '}}  ) }}
                             {{ form_widget( form.content, {'attr' : {'class' : 'form-control'}} )}}
                             <script>
@@ -112,7 +131,7 @@
 
                 </div>
                 <div class="tab-pane" id="meta">
-                    
+
 
                 </div>
                 <div class="tab-pane" id="more">

@@ -3,8 +3,23 @@ body {
 }
 
 nav {
-    box-shadow: 0 2px 0px #aaa;
+    border : 1px solid #aaa;
 }
+
+nav.navbar-default {
+    background-color: #ffffff;
+}
+
+header {
+    border-bottom: 1px solid #d5d5d5;
+    box-shadow: 0 3px 2px #aaa;
+    padding-bottom: 300px;
+}
+
+    header .navbar {
+        border-radius : 0;
+    }
+
 
 i.icon {
     font-size: 30px;
@@ -20,16 +35,135 @@ i.user-icon {
     margin-right:10px;
 
 }
+h1 {
+    font-size: 3.5em;
+    text-align: center;
+}
+
+.article-header {
+    margin-top: -200px;
+    margin-bottom: 150px;
+}
 
 section.card {
-    padding: 1.5em;
+    padding: 0;
     border :1px solid #d5d5d5;
     background-color: white;
-    margin: 0 1rem 1rem;
+    margin: 0 0 2.5rem 0;
 }
 
 section.card:hover {
     border: none;
     border :1px solid #f7f7f7;
-    box-shadow: 0 2px 2px #aaa;
+    box-shadow: 0 3px 2px #aaa;
+}
+
+    section.card .card-link {
+        margin: 1em 1.5em 0 0;
+    }
+
+        section.card.card-primary{}
+
+            section.card.card-primary .card-cover {
+                margin-left: -15px;
+                max-height: 200px;
+                overflow: hidden;
+                text-align: center;
+                vertical-align: middle;
+            }
+
+                section.card.card-primary .card-cover img {
+                    min-width: inherit;
+                    width: 100%;
+                    max-width: inherit;
+                    height: auto;
+                    margin: auto;
+                }
+
+            section.card.card-primary .card-content {
+            padding: 1.5em;
+            height: inherit;
+            box-sizing: border-box;
+        }
+
+        section.card.card-second{}
+
+            section.card.card-second .card-cover {
+            margin-left: -15px;
+            max-height: 200px;
+            overflow: hidden;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+            section.card.card-second .card-cover img {
+                max-height: 200px;;
+                margin: auto;
+            }
+
+        section.card.card-third{}
+
+            section.card.card-third .card-cover {
+                padding: 0;
+                max-height: 200px;
+                overflow: hidden;
+                text-align: center;
+                vertical-align: middle;
+            }
+
+            section.card.card-third .card-cover img {
+                min-width: inherit;
+                max-width: inherit;
+                width: inherit;
+                height: auto;
+                margin: auto;
+            }
+
+
+article {
+    background-color: rgba(255,255,255,0.4)
+}
+
+    article .article-header{
+        margin-top: -200px;
+        margin-bottom: 150px;
+    }
+
+        article .article-header h1 {
+            font-size: 3.5em;
+            text-align: center;
+        }
+
+    article .article-deails {
+        position: absolute;
+        left:7px;
+
+    }
+
+        article .article-deails ul {
+            padding :0;
+            list-style-type: none;
+        }
+
+            article .article-deails li {
+                color: #666666;
+                margin-bottom: 4px;
+            }
+
+                article .article-deails li i{
+                    font-size: 1.3em;
+                }
+
+                article .article-deails li span{
+                    font-size: 0.9em;
+                    font-style: italic;
+                }
+
+
+
+
+@media (min-width:768px) {
+    header .navbar {
+        border-radius:0;
+    }
 }
