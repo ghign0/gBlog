@@ -14,69 +14,92 @@
 {% endblock %}
 
 {% block mainContent %}
+
+
 <div class="row">
     <div class="col-xs-12">
         <section class="row card card-primary">
-            <div class="col-xs-4 card-cover">
+            <div class=" col-xs-12 col-md-4 card-cover">
+                <div class="card-category">
+                    {{  attribute(postList, 2).category.name }}
+                </div>
                 <img src="{{asset('media/')}}{{ attribute(postList, 2).cover }}" alt="{{ attribute(postList, 2).cover.name }}">
             </div>
-            <div class="col-xs-8 card-content ">
+            <div class=" cool-xs-12 col-md-8 card-content ">
                 <div class="card-header">
-                    <h2>{{ attribute(postList , 2).title }}</h1>
+                    <a href="{{ path('view_post', {'category' : attribute(postList , 2).category, 'slug' : attribute(postList , 2).slug }) }}">
+                        <h2>{{ attribute(postList , 2).title }}</h2>
+                    </a>
                 </div>
                 <div class="card-body">
                     {{ attribute(postList , 2).plot|raw }}
                 </div>
             </div>
             <div class="col-xs-1 pull-right text-muted text-right card-link">
-                <a href="{{ path('view_post', {'category' : attribute(postList , 2).category, 'slug' : attribute(postList , 2).slug }) }}">leggi</a>
+                <a href="{{ path('view_post', {'category' : attribute(postList , 2).category, 'slug' : attribute(postList , 2).slug }) }}"><i class="ion-arrow-right-a"></i></a>
             </div>
         </section>
 
     </div>
 </div>
+
+
 <div class="row">
     {% for i in 1..2  %}
     <div class="col-xs-12 col-md-6">
         <section class="row card card-second">
             <div class="col-xs-4 card-cover">
+                <div class="card-category">
+                    {{  attribute(postList, 2).category.name }}
+                </div>
                 <img src="{{asset('media/')}}{{ attribute(postList, 0).cover }}" alt="{{ attribute(postList, 0).cover.name }}">
             </div>
             <div class="col-xs-8 card-content ">
                 <div class="card-header">
-                    <h2>{{ attribute(postList , 0).title }}</h1>
+                    <a href="{{ path('view_post', {'category' : attribute(postList , 0).category, 'slug' : attribute(postList , 0).slug }) }}">
+                        <h2>{{ attribute(postList , 0).title }}</h2>
+                    </a>
                 </div>
                 <div class="card-body">
                     {{ attribute(postList , 0).plot|raw }}
                 </div>
             </div>
             <div class="col-xs-1 pull-right text-muted text-right card-link">
-                <a href="{{ path('view_post', {'category' : attribute(postList , 0).category, 'slug' : attribute(postList , 0).slug }) }}">leggi</a>
+                <a href="{{ path('view_post', {'category' : attribute(postList , 0).category, 'slug' : attribute(postList , 0).slug }) }}"><i class="ion-arrow-right-a"></i></a>
             </div>
         </section>
     </div>
     {% endfor %}
 </div>
+
+
+
 <div class="row">
     {% for i in 1..6  %}
     <div class="col-xs-12 col-md-6 col-lg-4">
         <section class="row card card-third">
             <div class="col-xs-12 card-cover">
+                <div class="card-category">
+                    {{  attribute(postList, 2).category.name }}
+                </div>
                 <img src="{{asset('media/')}}{{ attribute(postList, 1).cover }}" alt="{{ attribute(postList, 1).cover.name }}">
             </div>
             <div class="col-xs-12 card-content ">
                 <div class="card-header">
-                    <h2>{{ attribute(postList , 1).title }}</h1>
+                    <a href="{{ path('view_post', {'category' : attribute(postList , 1).category, 'slug' : attribute(postList , 1).slug }) }}" title="Leggi articolo">
+                        <h2>{{ attribute(postList , 1).title }}</h2>
+                    </a>
                 </div>
                 <div class="card-body">
                     {{ attribute(postList , 1).plot|raw }}
                 </div>
             </div>
             <div class="col-xs-3 pull-right text-muted text-right card-link">
-                <a href="{{ path('view_post', {'category' : attribute(postList , 1).category, 'slug' : attribute(postList , 1).slug }) }}">leggi</a>
+                <a href="{{ path('view_post', {'category' : attribute(postList , 1).category, 'slug' : attribute(postList , 1).slug }) }}" title="Leggi articolo"><i class="ion-arrow-right-a"></i></a>
             </div>
         </section>
     </div>
     {% endfor %}
 </div>
-</div>{% endblock %}
+
+{% endblock %}

@@ -58,6 +58,16 @@ section.card:hover {
     box-shadow: 0 3px 2px #aaa;
 }
 
+    section.card .card-category {
+        position:absolute;
+        top:0px;
+        left:15px;
+        font-size:16px;
+        padding: 4px;
+        background-color: red;
+        color: white;
+    }
+
     section.card .card-link {
         margin: 1em 1.5em 0 0;
     }
@@ -65,19 +75,17 @@ section.card:hover {
         section.card.card-primary{}
 
             section.card.card-primary .card-cover {
-                margin-left: -15px;
-                max-height: 200px;
+                max-height: 250px;
                 overflow: hidden;
-                text-align: center;
-                vertical-align: middle;
+                display: flex;
+                justify-content: center;
+
             }
 
                 section.card.card-primary .card-cover img {
-                    min-width: inherit;
-                    width: 100%;
-                    max-width: inherit;
-                    height: auto;
-                    margin: auto;
+                    min-width: 100%;
+                    max-width: 120%;
+                    flex: none;
                 }
 
             section.card.card-primary .card-content {
@@ -90,14 +98,13 @@ section.card:hover {
 
             section.card.card-second .card-cover {
             margin-left: -15px;
-            max-height: 200px;
             overflow: hidden;
             text-align: center;
             vertical-align: middle;
         }
 
             section.card.card-second .card-cover img {
-                max-height: 200px;;
+                max-height: 250px;
                 margin: auto;
             }
 
@@ -109,6 +116,9 @@ section.card:hover {
                 overflow: hidden;
                 text-align: center;
                 vertical-align: middle;
+            }
+            section.card.card-third .card-cover .card-category {
+                left:0px;
             }
 
             section.card.card-third .card-cover img {
@@ -133,6 +143,12 @@ article {
             font-size: 3.5em;
             text-align: center;
         }
+
+            article .article-header .site-name {
+                padding: 4px 7px;
+                font-size: 20px;
+            }
+
 
     article .article-deails {
         position: absolute;
